@@ -23,13 +23,13 @@ jobs:
           dotnet-version: '10'
           
       - name: Restore
-        run: dotnet restore ./KeyCloakDemoApi/KeyCloakDemoApi.csproj
+        run: dotnet restore 
         
       - name: Build
-        run: dotnet build ./KeyCloakDemoApi/KeyCloakDemoApi.csproj --configuration Release --no-restore
+        run: dotnet build  --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish ./KeyCloakDemoApi/KeyCloakDemoApi.csproj --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish  --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
         
       - name: Deployment
         uses: azure/webapps-deploy@v2
