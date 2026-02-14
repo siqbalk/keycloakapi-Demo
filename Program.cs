@@ -13,8 +13,7 @@ builder.Services.AddSwagger(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
@@ -23,7 +22,7 @@ if (app.Environment.IsDevelopment())
         c.OAuthAppName("KeycloakDemo API");
         c.OAuthUsePkce();                 // Recommended
     });
-}
+
 
 app.UseHttpsRedirection();
 
