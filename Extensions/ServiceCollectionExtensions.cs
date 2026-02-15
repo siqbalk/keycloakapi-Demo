@@ -11,14 +11,14 @@ namespace KeyCloakDemoApi.Extensions
         {
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer("Bearer", options =>
             {
-                options.Authority = "http://localhost:8080/realms/keyclock-demo";
+                options.Authority = "https://keycloakapp.whitewater-36b706c9.centralindia.azurecontainerapps.io/realms/keyclock-demo";
                 options.RequireHttpsMetadata = false;
 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateAudience = false,
                     ValidateIssuer = true,
-                    ValidIssuer = "http://localhost:8080/realms/keyclock-demo",
+                    ValidIssuer = "https://keycloakapp.whitewater-36b706c9.centralindia.azurecontainerapps.io/realms/keyclock-demo",
                     RoleClaimType = "realm_access.roles"
                 };
             });
@@ -53,8 +53,8 @@ namespace KeyCloakDemoApi.Extensions
                     {
                         AuthorizationCode = new OpenApiOAuthFlow
                         {
-                            AuthorizationUrl = new Uri("http://localhost:8080/realms/keyclock-demo/protocol/openid-connect/auth"),
-                            TokenUrl = new Uri("http://localhost:8080/realms/keyclock-demo/protocol/openid-connect/token"),
+                            AuthorizationUrl = new Uri("https://keycloakapp.whitewater-36b706c9.centralindia.azurecontainerapps.io/realms/keyclock-demo/protocol/openid-connect/auth"),
+                            TokenUrl = new Uri("http://https://keycloakapp.whitewater-36b706c9.centralindia.azurecontainerapps.io/realms/keyclock-demo/protocol/openid-connect/token"),
                             Scopes = new Dictionary<string, string>
            {
                 { "openid", "OpenID Connect scope" }
