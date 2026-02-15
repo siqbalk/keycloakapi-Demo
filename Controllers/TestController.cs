@@ -11,7 +11,7 @@ namespace KeycloakDemo.Controllers
         public IActionResult Public() => Ok("Public endpoint");
 
         [HttpGet("public-endpoint2")]
-        public IActionResult PublicEndPoint2() => Ok("Public endpoint");
+        public IActionResult PublicEndPoint2() => Ok("Public endpoint 2");
 
         [Authorize]
         [HttpGet("secure")]
