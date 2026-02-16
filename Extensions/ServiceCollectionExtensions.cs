@@ -42,7 +42,7 @@ namespace KeyCloakDemoApi.Extensions
     this IServiceCollection services,
     IConfiguration configuration)
         {
-            var keycloak = configuration.GetSection("Keycloak").Get<KeycloakSettings>();
+           // var keycloak = configuration.GetSection("Keycloak").Get<KeycloakSettings>();
 
             services.AddEndpointsApiExplorer();
 
@@ -51,37 +51,37 @@ namespace KeyCloakDemoApi.Extensions
                 options.SwaggerDoc("v1",
                     new OpenApiInfo { Title = "KeycloakDemo API", Version = "v1" });
 
-                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-                {
-                    Type = SecuritySchemeType.OAuth2,
-                    Flows = new OpenApiOAuthFlows
-                    {
-                        AuthorizationCode = new OpenApiOAuthFlow
-                        {
-                            AuthorizationUrl = new Uri(keycloak.Swagger.AuthorizationUrl),
-                            TokenUrl = new Uri(keycloak.Swagger.TokenUrl),
-                            Scopes = new Dictionary<string, string>
-                    {
-                        { keycloak.Swagger.Scope, "OpenID Connect scope" }
-                    }
-                        }
-                    }
-                });
+        //        options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+        //        {
+        //            Type = SecuritySchemeType.OAuth2,
+        //            Flows = new OpenApiOAuthFlows
+        //            {
+        //                AuthorizationCode = new OpenApiOAuthFlow
+        //                {
+        //                    AuthorizationUrl = new Uri(keycloak.Swagger.AuthorizationUrl),
+        //                    TokenUrl = new Uri(keycloak.Swagger.TokenUrl),
+        //                    Scopes = new Dictionary<string, string>
+        //            {
+        //                { keycloak.Swagger.Scope, "OpenID Connect scope" }
+        //            }
+        //                }
+        //            }
+        //        });
 
-                options.AddSecurityRequirement(new OpenApiSecurityRequirement
-        {
-            {
-                new OpenApiSecurityScheme
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "oauth2"
-                    }
-                },
-                new[] { keycloak.Swagger.Scope }
-            }
-        });
+        //        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        //{
+        //    {
+        //        new OpenApiSecurityScheme
+        //        {
+        //            Reference = new OpenApiReference
+        //            {
+        //                Type = ReferenceType.SecurityScheme,
+        //                Id = "oauth2"
+        //            }
+        //        },
+        //        new[] { keycloak.Swagger.Scope }
+        //    }
+        //});
             });
 
             return services;
