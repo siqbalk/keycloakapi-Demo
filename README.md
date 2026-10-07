@@ -116,7 +116,7 @@ Open http://localhost:8080 and sign in with `admin` / `admin`.
 4. Create two users, set passwords, and assign one `Admin` and the other `User`.
 5. Map realm roles to a flat claim so ASP.NET Core can read them. Go to **Clients → public-client → Client scopes → public-client-dedicated → Add mapper → By configuration → User Realm Role**, then set:
    - **Token claim name:** `roles`
-   - **Multivalued:** On
+   - **Multivalued:** On and Off
    - **Add to access token:** On
 
 ### 3. Configure the API
